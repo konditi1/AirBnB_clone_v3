@@ -6,7 +6,8 @@ from models.amenity import Amenity
 from api.v1.views import app_views
 
 
-@app_views.route("/amenities/<amenity_id>", strict_slashes=False, methods=["GET"])
+@app_views.route("/amenities/<amenity_id>", strict_slashes=False,
+                 methods=["GET"])
 @app_views.route("/amenities", strict_slashes=False, methods=["GET"])
 def get_amenities(amenity_id=None):
     """ get all amenity objects """
@@ -55,7 +56,8 @@ def post_amenities():
         abort(400, "Not a JSON")
 
 
-@app_views.route("/amenities/<amenity_id>", strict_slashes=False, methods=["PUT"])
+@app_views.route("/amenities/<amenity_id>", strict_slashes=False,
+                 methods=["PUT"])
 def put_amenities(amenity_id):
     """ update amenity objects """
     id = "Amenity.{}".format(amenity_id)
