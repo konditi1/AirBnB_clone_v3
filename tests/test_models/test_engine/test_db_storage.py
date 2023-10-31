@@ -30,6 +30,18 @@ class TestDBStorageDocs(unittest.TestCase):
         """Set up for the doc tests"""
         cls.dbs_f = inspect.getmembers(DBStorage, inspect.isfunction)
 
+    def test_get(self):
+        """Test get method"""
+        from models import storage
+        obj = storage.get(State, None);
+        self.assertEqual(obj, None);
+
+    def test_count(self):
+        """Test count method"""
+        from models import storage
+        n = storage.count(State);
+        self.assertEqual(type(n), int)
+
     def test_pep8_conformance_db_storage(self):
         """Test that models/engine/db_storage.py conforms to PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
@@ -41,7 +53,7 @@ class TestDBStorageDocs(unittest.TestCase):
         """Test tests/test_models/test_db_storage.py conforms to PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
         result = pep8s.check_files(['tests/test_models/test_engine/\
-test_db_storage.py'])
+                test_db_storage.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
