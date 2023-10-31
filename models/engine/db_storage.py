@@ -45,7 +45,7 @@ class DBStorage:
         objs = self.all(cls)
         for obj in objs:
             if obj.split(".")[1] == id:
-                return str(objs[obj])
+                return objs[obj]
 
     def count(self, cls=None):
         """get number of objects in storage"""
